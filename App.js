@@ -22,8 +22,7 @@ export default class App extends Component {
           style={{ flex: 1 }}
           barCodeTypes={[RNCamera.Constants.BarCodeType.qr]}
           onBarCodeRead={(data) => {
-            Linking
-              .openURL(data.data)
+            alert(data.data)
           }
 
           }
