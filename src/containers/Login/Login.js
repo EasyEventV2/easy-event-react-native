@@ -6,7 +6,7 @@ import {
     TouchableOpacity,
     KeyboardAvoidingView
 } from 'react-native';
-import { LoginAPI } from './../../services/apis'
+import { loginAPI } from './../../services/apis'
 import styles from './styles'
 
 export default class Login extends Component {
@@ -15,6 +15,24 @@ export default class Login extends Component {
         this.state = {
             username: '',
             password: '',
+        }
+    }
+
+    onLogin = () => {
+        if (this.state.password == '') {
+            alert("Empty password!")
+        }
+        else {
+            loginAPI(this.state.username, this.state.password)
+                .then((res) => res.json())
+                .then((resJSON) => {
+                    if (this.state.password === resJSON.password && this.state.username === resJSON.name) {
+                        this.props.navigation.navigate('Home');
+                    }
+                    else {
+                        alert("FALSE PASSWORD.")
+                    }
+                })
         }
     }
 
@@ -29,10 +47,13 @@ export default class Login extends Component {
                     <View style={styles.modalLogin}>
                         <TextInput
                             placeholder="Enter username..."
+                            onChangeText={(username) => this.setState({ username })}
                         >
                         </TextInput>
                         <TextInput
                             placeholder="Enter password..."
+                            onChangeText={(password) => this.setState({ password })}
+                            secureTextEntry={true}
                         >
                         </TextInput>
                     </View>
@@ -46,7 +67,7 @@ export default class Login extends Component {
                         </TouchableOpacity>
                         <TouchableOpacity
                             style={styles.button}
-                            onPress={() => { }}
+                            onPress={this.onLogin}
                         >
                             <Text>LOGIN</Text>
                         </TouchableOpacity>
