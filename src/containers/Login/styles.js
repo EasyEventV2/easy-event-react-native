@@ -5,33 +5,41 @@ export default StyleSheet.create({
         flex: 1,
         alignItems: "center",
         justifyContent: "center",
-        // backgroundColor: "blue",
     },
     container_text: {
-        alignItems: "center"
+        alignItems: "center",
+        flex: 1 / 3,
     },
     modal: {
         width: "100%",
-        height: "50%",
+        height: "80%",
         justifyContent: "center",
+        padding: 5,
+    },
+    head: {
+        fontSize: 25,
+        fontWeight: "bold",
     },
     text: {
-        fontSize: 25,
+        fontSize: 15,
         fontWeight: "bold",
     },
     modalLogin: {
         padding: 5,
+        flex: 1 / 3,
+        justifyContent: "center",
     },
     button: {
         padding: 10,
+        margin: 5,
         backgroundColor: "pink",
-        flex: 1/2,
         alignItems: "center",
         marginHorizontal: 5,
         borderRadius: 8,
     },
     button_container: {
-        flexDirection: "row",
-        padding: 5,
+        justifyContent: "center",
+        flex: 1 / 3,
+        marginTop: 15,
     }
 })

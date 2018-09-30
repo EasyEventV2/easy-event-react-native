@@ -8,9 +8,11 @@ import {
 } from 'react-native';
 
 export default class Home extends Component {
-    render () {
+    render() {
         return (
-            <View><Text>AHIHI</Text></View>
+            <View>
+                <Text>AHIHI</Text>
+            </View>
         )
     }
 }

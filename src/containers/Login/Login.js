@@ -4,7 +4,7 @@ import {
     Text,
     TextInput,
     TouchableOpacity,
-    KeyboardAvoidingView
+    ActivityIndicator,
 } from 'react-native';
 import { loginAPI } from './../../services/apis'
 import styles from './styles'
@@ -15,12 +15,15 @@ export default class Login extends Component {
         this.state = {
             username: '',
             password: '',
+            loading: 0,
         }
     }
 
     onLogin = () => {
+        this.setState({ loading: 1 });
         if (this.state.password == '') {
-            alert("Empty password!")
+            alert("Empty password!");
+            this.setState({ loading: 0 });
         }
         else {
             loginAPI(this.state.username, this.state.password)
@@ -30,9 +33,32 @@ export default class Login extends Component {
                         this.props.navigation.navigate('Home');
                     }
                     else {
-                        alert("FALSE PASSWORD.")
+                        alert("Wrong password or username!");
                     }
+                    this.setState({ loading: 0 });
                 })
+        }
+    }
+
+    renderLoading() {
+        if (this.state.loading === 0) {
+            return (
+                <View>
+                    <TouchableOpacity
+                        style={styles.button}
+                        onPress={this.onLogin}
+                    >
+                        <Text style={styles.text}>LOGIN</Text>
+                    </TouchableOpacity>
+                </View>
+            )
+        }
+        else if (this.state.loading === 1) {
+            return (
+                <View style={{ alignItems: "center", justifyContent: "center" }}>
+                    <ActivityIndicator size="large" color="red" />
+                </View>
+            )
         }
     }
 
@@ -41,35 +67,34 @@ export default class Login extends Component {
             <View style={styles.screen}>
                 <View style={styles.modal}>
                     <View style={styles.container_text}>
-                        <Text style={styles.text}>EASY EVENT</Text>
+                        <Text style={styles.head}>EASY EVENT</Text>
                     </View>
 
                     <View style={styles.modalLogin}>
-                        <TextInput
-                            placeholder="Enter username..."
-                            onChangeText={(username) => this.setState({ username })}
-                        >
-                        </TextInput>
-                        <TextInput
-                            placeholder="Enter password..."
-                            onChangeText={(password) => this.setState({ password })}
-                            secureTextEntry={true}
-                        >
-                        </TextInput>
+                        <View style={{ flex: 1 / 2 }}>
+                            <TextInput
+                                placeholder="Enter username..."
+                                onChangeText={(username) => this.setState({ username })}
+                            />
+                        </View>
+
+                        <View style={{ flex: 1 / 2 }}>
+                            <TextInput
+                                placeholder="Enter password..."
+                                onChangeText={(password) => this.setState({ password })}
+                                secureTextEntry={true}
+                            />
+                        </View>
+
                     </View>
-                    <View
-                        style={styles.button_container}>
+
+                    <View style={styles.button_container}>
+                        {this.renderLoading()}
                         <TouchableOpacity
-                            style={styles.button}
+                            style={[styles.button, { backgroundColor: "transparent" }]}
                             onPress={() => { }}
                         >
-                            <Text>REGISTER</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity
-                            style={styles.button}
-                            onPress={this.onLogin}
-                        >
-                            <Text>LOGIN</Text>
+                            <Text>Don't have any account? Create one.</Text>
                         </TouchableOpacity>
                     </View>
                 </View>
