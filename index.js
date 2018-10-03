@@ -4,7 +4,8 @@ import { AppRegistry } from 'react-native';
 import { name as appName } from './app.json';
 import { createStackNavigator } from 'react-navigation';
 import { Login } from './src/containers/Login';
-import { Home } from './src/containers/Home'
+import { Home } from './src/containers/Home';
+import {QR} from './src/containers/QR'
 
 // import { YellowBox } from 'react-native';
 // YellowBox.ignoreWarnings(['Warning: isMounted(...) is deprecated', 'Module RCTImageLoader']);
@@ -20,9 +21,9 @@ const root = createStackNavigator(
     Home: {
       screen: Home
     },
-    // STS02: {
-    //   screen: STS02
-    // },
+    QR: {
+      screen: QR
+    },
     // STS03: {
     //   screen: STS03
     // }

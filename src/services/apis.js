@@ -28,3 +28,17 @@ export function loadEventsAPI() {
         // })
     })
 }
+
+export function QRcheckAPI() {
+    return fetch(ServerUsers, {
+        // method: 'GET',
+        // headers: {
+        //     Accept: 'application/json',
+        //     'Content-Type': 'application/json',
+        // },
+        // body: JSON.stringify({
+        //     name: username,
+        //     password: password,
+        // })
+    })
+}
