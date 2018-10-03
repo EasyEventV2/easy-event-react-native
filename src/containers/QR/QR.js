@@ -42,9 +42,6 @@ export default class QR extends Component {
                                             }, 1000)
                                         }
                                     })
-                                    // .then(() => {
-                                    //     this.setState({ checked: 0 })
-                                    // })
                             }
                         }
                     >
