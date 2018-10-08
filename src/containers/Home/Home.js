@@ -10,7 +10,7 @@ import {
     Platform,
 } from 'react-native';
 import { loadEventsAPI } from './../../services/apis'
-// import styles from './styles'
+import styles from './styles'
 
 export default class Home extends Component {
     constructor(props) {
@@ -29,12 +29,12 @@ export default class Home extends Component {
                     this.state.data.push(resJSON.events[i])
                 }
                 console.log(this.state.data)
-                this.setState({loading: 0})
+                this.setState({ loading: 0 })
             })
     }
 
     render() {
-        if (this.state.loading === 0){
+        if (this.state.loading === 0) {
             return (
                 <View style={{ flex: 1 }}>
                     <FlatList
@@ -42,82 +42,31 @@ export default class Home extends Component {
                         data={this.state.data}
                         extraData={this.state.data}
                         keyExtractor={(item, index) => index}
-                        renderItem={( {item} ) =>
+                        renderItem={({ item }) =>
                             <View style={styles.GridViewBlockStyle}>
                                 <TouchableOpacity
-                                    onPress={() => { }}
+                                    onPress={() => {
+                                        this.props.navigation.navigate("QR", {
+                                            eventname: item.name
+                                        })
+                                    }}
                                 >
                                     <Text style={styles.GridViewInsideTextItemStyle}>
-                                        {item.description}
+                                        {item.name}
                                     </Text>
                                 </TouchableOpacity>
                             </View>}
                         numColumns={1}
                     />
-                    <Text>AHIHI</Text>
                 </View>
             )
         }
         else {
-            return(
-                <View><Text>LOADING....</Text></View>
+            return (
+                <View style={styles.MainContainer}>
+                    <ActivityIndicator size="large" color="red" />
+                </View>
             )
         }
     }
 }
-
-const styles = StyleSheet.create({
-    MainContainer: {
-        justifyContent: 'center',
-        flex: 1,
-        paddingTop: (Platform.OS) === 'ios' ? 20 : 0
-    },
-    GridViewBlockStyle: {
-        justifyContent: 'center',
-        flex: 1,
-        alignItems: 'center',
-        height: 100,
-        margin: 5,
-        backgroundColor: '#00BCD4',
-        borderWidth: 1
-    },
-    GridViewInsideTextItemStyle: {
-        padding: 10,
-        fontSize: 18,
-        justifyContent: 'center',
-    },
-    subbutton: {
-        marginTop: 10,
-        padding: 15,
-        marginLeft: 10,
-        marginRight: 10,
-        backgroundColor: '#00BCD4',
-        borderRadius: 10,                        //button with curves
-        borderWidth: 1,
-        borderColor: '#fff',
-        alignItems: "center",
-        flex: 1 / 2,
-    },
-    button: {
-        flexDirection: "row",
-        flex: 1 / 3,
-        margin: 5,
-        padding: 5,
-        alignItems: 'center',
-        justifyContent: 'center',
-        borderWidth: 3,
-        borderRadius: 10,
-        backgroundColor: "gray"
-    },
-    button2: {
-        flexDirection: "row",
-        flex: 1 / 2,
-        margin: 5,
-        padding: 5,
-        alignItems: 'center',
-        justifyContent: 'center',
-        borderWidth: 3,
-        borderRadius: 10,
-        backgroundColor: "gray"
-    },
-});

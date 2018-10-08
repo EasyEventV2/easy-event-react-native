@@ -30,7 +30,9 @@ export default class Login extends Component {
                 .then((res) => res.json())
                 .then((resJSON) => {
                     if (this.state.password === resJSON.password && this.state.username === resJSON.name) {
-                        this.props.navigation.navigate('QR');
+                        this.props.navigation.navigate('Home', {
+                            username: this.state.username
+                        });
                     }
                     else {
                         alert("Wrong password or username!");

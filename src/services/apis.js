@@ -1,5 +1,5 @@
-import ServerUsers from './../config/server'
-import ServerEvents from './../config/server'
+import ServerUsers from '../config/serverUsers'
+import ServerEvents from '../config/serverEvents'
 
 export function loginAPI(username, password) {
     return fetch(ServerUsers, {
