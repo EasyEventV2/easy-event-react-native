@@ -36,9 +36,13 @@ export default class Home extends Component {
     render() {
         if (this.state.loading === 0) {
             return (
-                <View style={{ flex: 1 }}>
+                <View style={styles.Screen}>
+                    <View
+                        style={styles.topBar}>
+
+                    </View>
                     <FlatList
-                        style={{ flex: 1 }}
+                        style={{ flex: 6 / 7 }}
                         data={this.state.data}
                         extraData={this.state.data}
                         keyExtractor={(item, index) => index}
@@ -54,6 +58,9 @@ export default class Home extends Component {
                                     <Text style={styles.GridViewInsideTextItemStyle}>
                                         {item.name}
                                     </Text>
+                                    <Text style={styles.GridViewInsideTextItemStyle}>
+                                        {item.description}
+                                    </Text>
                                 </TouchableOpacity>
                             </View>}
                         numColumns={1}
@@ -63,7 +70,7 @@ export default class Home extends Component {
         }
         else {
             return (
-                <View style={styles.MainContainer}>
+                <View style={[styles.Screen]}>
                     <ActivityIndicator size="large" color="red" />
                 </View>
             )

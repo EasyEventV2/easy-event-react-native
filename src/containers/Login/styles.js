@@ -23,6 +23,7 @@ export default StyleSheet.create({
     text: {
         fontSize: 15,
         fontWeight: "bold",
+        color: "white",
     },
     modalLogin: {
         padding: 5,
@@ -32,7 +33,7 @@ export default StyleSheet.create({
     button: {
         padding: 10,
         margin: 5,
-        backgroundColor: "pink",
+        backgroundColor: "#5e9cf9",
         alignItems: "center",
         marginHorizontal: 5,
         borderRadius: 8,
