@@ -50,7 +50,7 @@ export default class Login extends Component {
                         style={styles.button}
                         onPress={this.onLogin}
                     >
-                        <Text style={[styles.text, {fontFamily: "vincHand",}]}>LOGIN</Text>
+                        <Text style={styles.text}>LOGIN</Text>
                     </TouchableOpacity>
                 </View>
             )
@@ -69,7 +69,7 @@ export default class Login extends Component {
             <View style={styles.screen}>
                 <View style={styles.modal}>
                     <View style={styles.container_text}>
-                        <Text style={styles.head}>EASY EVENT</Text>
+                        <Text style={[styles.head,{fontFamily: "vincHand",}]}>EASY EVENT</Text>
                     </View>
 
                     <View style={styles.modalLogin}>
