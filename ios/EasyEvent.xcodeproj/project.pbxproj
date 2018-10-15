@@ -44,6 +44,9 @@
 		9C12656315224A8DB001BA99 /* TAGACNBI.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E1197C2E708646C580E6AA16 /* TAGACNBI.ttf */; };
 		3A1980D7F2FF42E5A107E52E /* TAGACNI_.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CA1A2030A7C4433BA2D1C85F /* TAGACNI_.ttf */; };
 		C9C7C300B78E428EAA07CA0F /* TAGACNRG.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 49DD06E9A5F64EEC85389A4C /* TAGACNRG.ttf */; };
+		D480E523C70F475597B92886 /* VincHand.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3FE4BCD6B4054443A2602179 /* VincHand.ttf */; };
+		A3EDCF54EFCF4FA396DFBA98 /* Charmonman-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CC3BFCEDB0EB4272A5FB716C /* Charmonman-Bold.ttf */; };
+		484D584E822E46E18F124C91 /* Charmonman-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3A0F9A5D57F84D77B018D4A0 /* Charmonman-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -357,6 +360,9 @@
 		E1197C2E708646C580E6AA16 /* TAGACNBI.ttf */ = {isa = PBXFileReference; name = "TAGACNBI.ttf"; path = "../assets/fonts/TAGACNBI.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		CA1A2030A7C4433BA2D1C85F /* TAGACNI_.ttf */ = {isa = PBXFileReference; name = "TAGACNI_.ttf"; path = "../assets/fonts/TAGACNI_.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		49DD06E9A5F64EEC85389A4C /* TAGACNRG.ttf */ = {isa = PBXFileReference; name = "TAGACNRG.ttf"; path = "../assets/fonts/TAGACNRG.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		3FE4BCD6B4054443A2602179 /* VincHand.ttf */ = {isa = PBXFileReference; name = "VincHand.ttf"; path = "../assets/fonts/VincHand.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		CC3BFCEDB0EB4272A5FB716C /* Charmonman-Bold.ttf */ = {isa = PBXFileReference; name = "Charmonman-Bold.ttf"; path = "../assets/fonts/Charmonman-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		3A0F9A5D57F84D77B018D4A0 /* Charmonman-Regular.ttf */ = {isa = PBXFileReference; name = "Charmonman-Regular.ttf"; path = "../assets/fonts/Charmonman-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -629,6 +635,9 @@
 				E1197C2E708646C580E6AA16 /* TAGACNBI.ttf */,
 				CA1A2030A7C4433BA2D1C85F /* TAGACNI_.ttf */,
 				49DD06E9A5F64EEC85389A4C /* TAGACNRG.ttf */,
+				3FE4BCD6B4054443A2602179 /* VincHand.ttf */,
+				CC3BFCEDB0EB4272A5FB716C /* Charmonman-Bold.ttf */,
+				3A0F9A5D57F84D77B018D4A0 /* Charmonman-Regular.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -1086,6 +1095,9 @@
 				9C12656315224A8DB001BA99 /* TAGACNBI.ttf in Resources */,
 				3A1980D7F2FF42E5A107E52E /* TAGACNI_.ttf in Resources */,
 				C9C7C300B78E428EAA07CA0F /* TAGACNRG.ttf in Resources */,
+				D480E523C70F475597B92886 /* VincHand.ttf in Resources */,
+				A3EDCF54EFCF4FA396DFBA98 /* Charmonman-Bold.ttf in Resources */,
+				484D584E822E46E18F124C91 /* Charmonman-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

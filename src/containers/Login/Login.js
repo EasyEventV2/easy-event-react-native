@@ -69,7 +69,7 @@ export default class Login extends Component {
             <View style={styles.screen}>
                 <View style={styles.modal}>
                     <View style={styles.container_text}>
-                        <Text style={[styles.head,{fontFamily: "vincHand",}]}>EASY EVENT</Text>
+                        <Text style={[styles.head,{fontFamily: "Charmonman-Regular", fontStyle: "italic"}]}>EASY EVENT</Text>
                     </View>
 
                     <View style={styles.modalLogin}>
