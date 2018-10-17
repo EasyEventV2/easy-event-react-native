@@ -71,7 +71,7 @@ export default class Home extends Component {
         else {
             return (
                 <View style={[styles.Screen]}>
-                    <ActivityIndicator size="large" color="red" />
+                    <ActivityIndicator size="large" color="#fb3" />
                 </View>
             )
         }
