@@ -13,7 +13,7 @@ export default StyleSheet.create({
   },
   head: {
     fontSize: 25,
-    fontFamily: "VincHand",
+    fontFamily: "Charmonman-Bold",
   },
   text: {
     fontSize: 15,

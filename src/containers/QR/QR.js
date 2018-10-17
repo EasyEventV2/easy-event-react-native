@@ -1,98 +1,98 @@
 import React, { Component } from 'react';
 import {
-    View,
-    Text,
-    TextInput,
-    TouchableOpacity,
-    ActivityIndicator,
+  View,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  ActivityIndicator,
 } from 'react-native';
 import { QRcheckAPI } from './../../services/apis'
 import styles from './styles'
 import { RNCamera } from 'react-native-camera'
 
 export default class QR extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            checked: 0
-        }
+  constructor(props) {
+    super(props);
+    this.state = {
+      checked: 0
+    }
+  }
+
+  render() {
+    if (this.state.checked === 0) {
+      return (
+        <View style={styles.screen}>
+          <RNCamera
+            ref={ref => {
+              this.camera = ref;
+            }}
+            style={styles.camera_screen}
+            onBarCodeRead={
+              result => {
+                QRcheckAPI()
+                  .then(res => res.json())
+                  .then(resJSON => {
+                    if (result.data === resJSON.id) {
+                      this.setState({ checked: 1 })
+                    }
+                    else {
+                      this.setState({ checked: -1 })
+                    }
+                  })
+              }
+            }
+          >
+            <View
+              style={[styles.blur_screen1, {justifyContent: "center"}]}
+              opacity={0.7}>
+              <Text style= {[styles.text, {color: "#fb3", fontWeight: "bold"}]}>Quét QR code trong ô vuông này</Text>
+            </View>
+            <View
+              style={{ flex: 1 / 2, flexDirection: "row", justifyContent: "space-between" }}>
+              <View style={styles.blur_screen2}
+                opacity={0.7}></View>
+              <View style={styles.blur_screen2}
+                opacity={0.7}></View>
+            </View>
+            <View style={styles.blur_screen1}
+              opacity={0.7}></View>
+          </RNCamera>
+        </View >
+      );
+    }
+    else if (this.state.checked === 1) {
+      return (
+        <View style={[styles.screen, { alignItems: "center" }]}>
+          <View style={{ alignItems: "center" }}>
+            <Text style={styles.text}>ĐÃ QUÉT</Text>
+          </View>
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => {
+              this.setState({ checked: 0 })
+            }}>
+            <Text>QUÉT LẠI</Text>
+          </TouchableOpacity>
+        </View>
+      );
     }
 
-    render() {
-        if (this.state.checked == 0) {
-            return (
-                <View style={styles.screen}>
-                    <RNCamera
-                        ref={ref => {
-                            this.camera = ref;
-                        }}
-                        style={styles.screen}
-                        onBarCodeRead={
-                            result => {
-                                QRcheckAPI()
-                                    .then(res => res.json())
-                                    .then(resJSON => {
-                                        if (result.data === resJSON.id) {
-                                            this.setState({ checked: 1 })
-                                        }
-                                        else {
-                                            this.setState({ checked: -1 })
-                                            setTimeout(() => {
-                                                this.setState({ checked: 0 })
-                                            }, 1000)
-                                        }
-                                    })
-                            }
-                        }
-                    >
-                    </RNCamera>
-                </View>
-            );
-        }
-        else if (this.state.checked === 1) {
-            return (
-                <View style={styles.screen}>
-                    <Text>CHECKED</Text>
-                    <TouchableOpacity
-                        onPress={() => {
-                            this.setState({ checked: 0 })
-                        }}>
-                        <Text>Back to Camera</Text>
-                    </TouchableOpacity>
-                </View>
-            );
-        }
+    else {
+      return (
+        <View style={[styles.screen, { alignItems: "center" }]}>
+          <View style={{ alignItems: "center", justifyContent: "center" }}>
+            <Text style={styles.text}>KHÔNG CÓ MÃ QR HOẶC MÃ QR ĐÃ ĐƯỢC SỬ DỤNG</Text>
+          </View>
 
-        else {
-            return (
-                <View style={styles.screen}>
-                    <RNCamera
-                        ref={ref => {
-                            this.camera = ref;
-                        }}
-                        style={styles.screen}
-                        onBarCodeRead={
-                            result => {
-                                QRcheckAPI()
-                                    .then(res => res.json())
-                                    .then(resJSON => {
-                                        if (result.data === resJSON.id) {
-                                            this.setState({ checked: 1 })
-                                        }
-                                        else {
-                                            this.setState({ checked: -1 })
-                                            setTimeout(() => {
-                                                this.setState({ checked: 0 })
-                                            }, 1000)
-                                        }
-                                    })
-                            }
-                        }
-                    >
-                    </RNCamera>
-                    <Text>NOT IN DATABASE</Text>
-                </View>
-            )
-        }
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => {
+              this.setState({ checked: 0 })
+            }}>
+            <Text>QUÉT LẠI</Text>
+          </TouchableOpacity>
+        </View>
+      )
     }
+  }
 }

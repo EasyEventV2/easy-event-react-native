@@ -74,14 +74,14 @@ export default class Login extends Component {
         <View style={styles.form}>
           <View style={{ flex: 1 / 2 }}>
             <TextInput
-              placeholder="Enter username..."
+              placeholder="Tên người dùng..."
               onChangeText={(username) => this.setState({ username })}
             />
           </View>
 
           <View style={{ flex: 1 / 2 }}>
             <TextInput
-              placeholder="Enter password..."
+              placeholder="Mật khẩu..."
               onChangeText={(password) => this.setState({ password })}
               secureTextEntry={true}
             />
@@ -94,7 +94,7 @@ export default class Login extends Component {
             style={[styles.button, { backgroundColor: "transparent" }]}
             onPress={() => { }}
           >
-            <Text>Don't have any account? Create one.</Text>
+            <Text>Không có tài khoản? Tạo mới ở đây</Text>
           </TouchableOpacity>
         </View>
       </View>
