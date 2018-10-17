@@ -68,7 +68,7 @@ export default class Login extends Component {
     return (
       <View style={styles.screen}>
         <View style={styles.container_text}>
-          <Text style={[styles.head, { fontFamily: "Charmonman-Regular"}]}>EASY EVENT</Text>
+          <Text style={styles.head}>EASY EVENT</Text>
         </View>
 
         <View style={styles.form}>
