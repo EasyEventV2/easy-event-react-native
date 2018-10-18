@@ -50,7 +50,7 @@ export default class Login extends Component {
             style={styles.button}
             onPress={this.onLogin}
           >
-            <Text style={styles.text}>LOGIN</Text>
+            <Text style={styles.text}>ĐĂNG NHẬP</Text>
           </TouchableOpacity>
         </View>
       )
