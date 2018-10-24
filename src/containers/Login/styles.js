@@ -2,13 +2,13 @@ import { StyleSheet } from 'react-native'
 
 export default StyleSheet.create({
   screen: {
-    flex: 0.95,
+    flex: 1,
     justifyContent: "center",
     alignItems: "center",
   },
-  container_text: {
+  container_img: {
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "flex-end",
     flex: 1 / 3,
   },
   head_image: {
@@ -23,11 +23,10 @@ export default StyleSheet.create({
     width: "90%",
     padding: 5,
     flex: 1 / 3,
-    justifyContent: "center",
   },
   form_input: {
     flex: 1 / 2, 
-    justifyContent: "center",
+    justifyContent: "flex-end",
   },
   button: {
     padding: 10,

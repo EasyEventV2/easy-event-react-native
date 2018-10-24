@@ -68,7 +68,7 @@ export default class Login extends Component {
   render() {
     return (
       <View style={styles.screen}>
-        <View style={styles.container_text}>
+        <View style={styles.container_img}>
           <Image
             style={styles.head_image}
             source={require("../../../img/Easy-Event.png")} />
