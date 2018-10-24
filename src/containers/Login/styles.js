@@ -11,9 +11,9 @@ export default StyleSheet.create({
     justifyContent: "center",
     flex: 1 / 3,
   },
-  head: {
-    fontSize: 25,
-    fontFamily: "Charmonman-Bold",
+  head_image: {
+    width: 200,
+    height: 128,
   },
   text: {
     fontSize: 15,
@@ -23,6 +23,10 @@ export default StyleSheet.create({
     width: "90%",
     padding: 5,
     flex: 1 / 3,
+    justifyContent: "center",
+  },
+  form_input: {
+    flex: 1 / 2, 
     justifyContent: "center",
   },
   button: {

@@ -5,6 +5,7 @@ import {
   TextInput,
   TouchableOpacity,
   ActivityIndicator,
+  Image,
 } from 'react-native';
 import { loginAPI } from './../../services/apis'
 import styles from './styles'
@@ -68,18 +69,20 @@ export default class Login extends Component {
     return (
       <View style={styles.screen}>
         <View style={styles.container_text}>
-          <Text style={styles.head}>EASY EVENT</Text>
+          <Image
+            style={styles.head_image}
+            source={require("../../../img/Easy-Event.png")} />
         </View>
 
         <View style={styles.form}>
-          <View style={{ flex: 1 / 2 }}>
+          <View style={styles.form_input}>
             <TextInput
               placeholder="Tên người dùng..."
               onChangeText={(username) => this.setState({ username })}
             />
           </View>
 
-          <View style={{ flex: 1 / 2 }}>
+          <View style={styles.form_input}>
             <TextInput
               placeholder="Mật khẩu..."
               onChangeText={(password) => this.setState({ password })}
