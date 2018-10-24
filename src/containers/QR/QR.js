@@ -7,6 +7,8 @@ import {
   ActivityIndicator,
 } from 'react-native';
 import { QRcheckAPI } from './../../services/apis'
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
+// import AntDesign from 'react-native-vector-icons/AntDesign'
 import styles from './styles'
 import { RNCamera } from 'react-native-camera'
 
@@ -71,6 +73,7 @@ export default class QR extends Component {
             onPress={() => {
               this.setState({ checked: 0 })
             }}>
+            {/* <AntDesign name = "circledowno" size = "70" color = "#fb3"></AntDesign> */}
             <Text>QUÉT LẠI</Text>
           </TouchableOpacity>
         </View>

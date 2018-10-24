@@ -41,7 +41,7 @@ export default class Home extends Component {
         <View style={styles.screen}>
           <View style = {styles.header}>
             <Text style={styles.header_text}>
-              EVENTS
+              SỰ KIỆN
           </Text>
           </View>
 
@@ -63,7 +63,7 @@ export default class Home extends Component {
                     source={{ uri: item.dataURI }}
                     style={styles.imageBackground}>
                     <View style={styles.block_footer}>
-                      <Text style={styles.block_text}>
+                      <Text style={[styles.block_text, {fontSize: 20, fontWeight: "bold"}]}>
                         {item.name}
                       </Text>
                       <Text style={styles.block_text}>
