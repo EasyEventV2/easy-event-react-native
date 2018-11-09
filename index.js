@@ -28,7 +28,7 @@ const root = createStackNavigator(
     // }
   },
   {
-    initialRouteName: 'Login',
+    initialRouteName: 'Home',
     headerMode: 'none',
   }
 );
