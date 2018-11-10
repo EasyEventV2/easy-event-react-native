@@ -38,7 +38,6 @@ export default class Home extends Component {
         for (var i = 0; i < resJSON.length; i++) {
           this.state.data.push(resJSON[i])
         }
-        console.log(this.state.data)
         this.setState({ loading: 0 })
       })
   }
@@ -127,10 +126,12 @@ export default class Home extends Component {
                     this.setModalVisible(true);
                   }}
                 >
-                  {/* <ImageBackground
+                  <ImageBackground
                     source={{ uri: item.dataURI }}
-                    style={styles.imageBackground}> */}
-                  <View style={styles.imageBackground}>
+                    style={styles.imageBackground}>
+
+
+                  {/* <View style={styles.imageBackground}> */}
                     <View style={styles.block_footer}>
                       <View style={{ flex: 1 / 2, justifyContent: "center" }}>
                         <Text style={[styles.block_text, { fontSize: 15, fontWeight: "bold" }]}>
@@ -151,8 +152,11 @@ export default class Home extends Component {
                         </TouchableOpacity>
                       </View>
                     </View>
-                  </View>
-                  {/* </ImageBackground> */}
+                  {/* </View> */}
+
+
+
+                  </ImageBackground>
                 </TouchableOpacity>
               </View>}
             numColumns={1}
