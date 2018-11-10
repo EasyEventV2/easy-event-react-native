@@ -17,7 +17,7 @@ export function loginAPI(username, password) {
 
 export function loadEventsAPI() {
     return fetch(ServerEvents, {
-        // method: 'GET',
+        method: 'GET',
         // headers: {
         //     Accept: 'application/json',
         //     'Content-Type': 'application/json',

@@ -21,7 +21,7 @@ export default StyleSheet.create({
     elevation: 10,
   },
   block_text: {
-    fontSize: 15,
+    fontSize: 12,
   },
   imageBackground: {
     width: '100%',
@@ -29,14 +29,17 @@ export default StyleSheet.create({
     justifyContent: 'flex-end',
   },
   block_footer: {
-    height: "30%",
+    height: "35%",
     backgroundColor: '#cccccccc',
     justifyContent: 'center',
     paddingHorizontal: 10,
   },
   header: {
     height: Dimensions.get('window').height * 0.15,
-    justifyContent: "center",
+    justifyContent: "space-between",
+    alignItems: "center",
+    flexDirection: "row",
+    paddingHorizontal: 10,
   },
   header_text: {
     fontSize: 25,

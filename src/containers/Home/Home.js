@@ -35,8 +35,8 @@ export default class Home extends Component {
     loadEventsAPI()
       .then(res => res.json())
       .then(resJSON => {
-        for (var i = 0; i < resJSON.events.length; i++) {
-          this.state.data.push(resJSON.events[i])
+        for (var i = 0; i < resJSON.length; i++) {
+          this.state.data.push(resJSON[i])
         }
         console.log(this.state.data)
         this.setState({ loading: 0 })
@@ -107,6 +107,9 @@ export default class Home extends Component {
             <Text style={styles.header_text}>
               SỰ KIỆN
             </Text>
+            <Text style = {{textAlign: "center",}}>
+              {this.state.data[0].organizer}
+            </Text>
           </View>
 
           {this.renderModal()}
@@ -124,16 +127,17 @@ export default class Home extends Component {
                     this.setModalVisible(true);
                   }}
                 >
-                  <ImageBackground
+                  {/* <ImageBackground
                     source={{ uri: item.dataURI }}
-                    style={styles.imageBackground}>
+                    style={styles.imageBackground}> */}
+                  <View style={styles.imageBackground}>
                     <View style={styles.block_footer}>
                       <View style={{ flex: 1 / 2, justifyContent: "center" }}>
                         <Text style={[styles.block_text, { fontSize: 15, fontWeight: "bold" }]}>
                           {item.name}
                         </Text>
                       </View>
-                      <View style={{ flex: 1 / 2, justifyContent: "center" }}>
+                      <View style={{ flex: 1 / 2, justifyContent: "flex-start" }}>
                         <TouchableOpacity
                           style={styles.check_in_button}
                           onPress={() => {
@@ -146,9 +150,9 @@ export default class Home extends Component {
                         </Text>
                         </TouchableOpacity>
                       </View>
-
                     </View>
-                  </ImageBackground>
+                  </View>
+                  {/* </ImageBackground> */}
                 </TouchableOpacity>
               </View>}
             numColumns={1}
