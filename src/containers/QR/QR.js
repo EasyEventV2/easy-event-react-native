@@ -31,14 +31,18 @@ export default class QR extends Component {
             style={styles.camera_screen}
             onBarCodeRead={
               result => {
-                QRcheckAPI()
+                this.setState({ checked: 3 })
+                QRcheckAPI(result.data)
                   .then(res => res.json())
                   .then(resJSON => {
-                    if (result.data === resJSON.id) {
+                    if (resJSON.message === 'Done.') {
                       this.setState({ checked: 1 })
                     }
-                    else {
+                    else if (resJSON.message === 'Guest ID already checked.') {
                       this.setState({ checked: -1 })
+                    }
+                    else if (resJSON.message === 'No guest ID in database.') {
+                      this.setState({ checked: 2 })
                     }
                   })
               }
@@ -80,11 +84,11 @@ export default class QR extends Component {
       );
     }
 
-    else {
+    else if (this.state.checked === -1) {
       return (
         <View style={[styles.screen, { alignItems: "center" }]}>
           <View style={{ alignItems: "center", justifyContent: "center" }}>
-            <Text style={styles.text}>KHÔNG CÓ MÃ QR HOẶC MÃ QR ĐÃ ĐƯỢC SỬ DỤNG</Text>
+            <Text style={styles.text}>MÃ QR ĐÃ ĐƯỢC SỬ DỤNG</Text>
           </View>
 
           <TouchableOpacity
@@ -94,6 +98,32 @@ export default class QR extends Component {
             }}>
             <Text>QUÉT LẠI</Text>
           </TouchableOpacity>
+        </View>
+      )
+    }
+
+    else if (this.state.checked === 2) {
+      return (
+        <View style={[styles.screen, { alignItems: "center" }]}>
+          <View style={{ alignItems: "center", justifyContent: "center" }}>
+            <Text style={styles.text}>KHÔNG CÓ MÃ QR</Text>
+          </View>
+
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => {
+              this.setState({ checked: 0 })
+            }}>
+            <Text>QUÉT LẠI</Text>
+          </TouchableOpacity>
+        </View>
+      )
+    }
+
+    else {
+      return (
+        <View style={styles.screen}>
+          <ActivityIndicator size="large" color="#fb3" />
         </View>
       )
     }

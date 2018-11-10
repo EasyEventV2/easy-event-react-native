@@ -117,7 +117,7 @@ export default class Home extends Component {
             style={styles.list}
             data={this.state.data}
             extraData={this.state.data}
-            keyExtractor={(item, index) => index}
+            keyExtractor={(item) => item.toString()}
             renderItem={({ item }) =>
               <View style={styles.block_list}>
                 <TouchableOpacity
