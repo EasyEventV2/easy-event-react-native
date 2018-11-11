@@ -30,7 +30,7 @@ export function loadEventsAPI() {
     })
 }
 
-export function QRcheckAPI(result) {
+export function QRcheckAPI(result,event) {
     return fetch(ServerQR, {
         method: 'POST',
         headers: {
@@ -39,6 +39,7 @@ export function QRcheckAPI(result) {
         },
         body: JSON.stringify({
             QRcode: result,
+            event_id: event
         })
     })
 }

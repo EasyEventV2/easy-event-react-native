@@ -53,6 +53,7 @@ export default StyleSheet.create({
     backgroundColor: "#fb3",
     alignItems: "center",
     alignSelf: "flex-end",
+    elevation: 10,
   },
   modalScroll: {
 

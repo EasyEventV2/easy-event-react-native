@@ -13,13 +13,14 @@ import styles from './styles'
 import { RNCamera } from 'react-native-camera'
 
 export default class QR extends Component {
+
   constructor(props) {
     super(props);
     this.state = {
       checked: 0
     }
   }
-
+  
   render() {
     if (this.state.checked === 0) {
       return (
@@ -31,8 +32,9 @@ export default class QR extends Component {
             style={styles.camera_screen}
             onBarCodeRead={
               result => {
+                const event_id = this.props.navigation.getParam('event_id');
                 this.setState({ checked: 3 })
-                QRcheckAPI(result.data)
+                QRcheckAPI(result.data, event_id)
                   .then(res => res.json())
                   .then(resJSON => {
                     if (resJSON.message === 'Done.') {

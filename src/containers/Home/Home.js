@@ -143,7 +143,7 @@ export default class Home extends Component {
                           style={styles.check_in_button}
                           onPress={() => {
                             this.props.navigation.navigate("QR", {
-                              eventname: item.name
+                              event_id: item._id
                             })
                           }}>
                           <Text style={styles.block_text}>
