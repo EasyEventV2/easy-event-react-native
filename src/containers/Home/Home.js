@@ -52,7 +52,9 @@ export default class Home extends Component {
           onRequestClose={() => {
             this.setModalVisible(!this.state.modalVisible);
           }}>
-          <ScrollView style={styles.modalScroll}>
+          <ScrollView
+            scrollEnabled={true}
+            style={styles.modalScroll}>
             <View style={styles.modalBackground}>
               <Image
                 source={{ uri: this.state.data[this.state.choose].dataURI }}
@@ -65,15 +67,32 @@ export default class Home extends Component {
                     <Icon name='ios-close-circle' size={40} color='#ddddddaa' />
                   </TouchableOpacity> */}
               </Image>
-              <View style={styles.footer}
-                blurRadius={50}>
-                <Text style={styles.description}>
-                  {this.state.data[this.state.choose].description}
+            </View>
+            <View style={{ padding: 10 }}>
+              <Text style={[styles.header_text, { fontSize: 45, marginBottom: 10 }]}>
+                {this.state.data[this.state.choose].name}
+              </Text>
+
+              <Text style={styles.header2_text}>
+                Thời gian:
                 </Text>
-                {/* <Text style={styles.tag}>
-                      {this.props.item.tag}
-                    </Text> */}
-              </View>
+              <Text style={styles.paragraph_text}>
+                {this.state.data[this.state.choose].time.begin_date} đến {this.state.data[this.state.choose].time.end_date} ({this.state.data[this.state.choose].time.begin_time} - {this.state.data[this.state.choose].time.end_time})
+                </Text>
+
+              <Text style={styles.header2_text}>
+                Địa điểm: {this.state.data[this.state.choose].place}
+              </Text>
+              <Text style={styles.paragraph_text}>
+                {this.state.data[this.state.choose].address}
+              </Text>
+
+              <Text style={styles.header2_text}>
+                Giới thiệu:
+                </Text>
+              <Text style={styles.paragraph_text}>
+                {this.state.data[this.state.choose].description}
+              </Text>
             </View>
 
             {/* {(this.props.item.hasVideo == 'yes') ?
@@ -106,7 +125,7 @@ export default class Home extends Component {
             <Text style={styles.header_text}>
               SỰ KIỆN
             </Text>
-            <Text style = {{textAlign: "center",}}>
+            <Text style={{ textAlign: "center", }}>
               {this.state.data[0].organizer}
             </Text>
           </View>
@@ -129,9 +148,6 @@ export default class Home extends Component {
                   <ImageBackground
                     source={{ uri: item.dataURI }}
                     style={styles.imageBackground}>
-
-
-                  {/* <View style={styles.imageBackground}> */}
                     <View style={styles.block_footer}>
                       <View style={{ flex: 1 / 2, justifyContent: "center" }}>
                         <Text style={[styles.block_text, { fontSize: 15, fontWeight: "bold" }]}>
@@ -152,10 +168,6 @@ export default class Home extends Component {
                         </TouchableOpacity>
                       </View>
                     </View>
-                  {/* </View> */}
-
-
-
                   </ImageBackground>
                 </TouchableOpacity>
               </View>}

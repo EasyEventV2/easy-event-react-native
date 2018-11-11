@@ -46,6 +46,14 @@ export default StyleSheet.create({
     fontWeight: "bold",
     textAlign: "center",
   },
+  header2_text: { 
+    fontSize: 24, 
+    fontWeight: "bold",
+  },
+  paragraph_text: { 
+    fontSize: 15, 
+    marginBottom: 10 
+  },
   check_in_button: {
     borderRadius: 5,
     padding: 5,
@@ -56,14 +64,13 @@ export default StyleSheet.create({
     elevation: 10,
   },
   modalScroll: {
-
+    
   },
   modalBackground: {
-    height: Dimensions.get('window').height * 0.8,
+    height: Dimensions.get('window').height * 0.35,
   },
   imageBackgroundModal: {
     width: '100%',
-    flex: 1,
-    justifyContent: 'space-between',
+    height: '100%',
   },
 })

@@ -6,6 +6,12 @@ export default StyleSheet.create({
     flexDirection: "column",
     justifyContent: "center",
   },
+  screen_part: {
+    alignItems: "center",
+    justifyContent: "center",
+    paddingHorizontal: 10,
+    flex: 1 / 3,
+  },
   blur_screen1: {
     flex: 1 / 4,
     backgroundColor: "black",
@@ -28,8 +34,15 @@ export default StyleSheet.create({
     marginHorizontal: 5,
     borderRadius: 8,
   },
+  noti_text: {
+    fontSize: 16,
+    fontStyle: "italic",
+    color: "black",
+    paddingVertical: 10,
+    // textAlign: "center",
+  },
   text: {
-    fontSize: 25,
+    fontSize: 35,
     color: "black",
     textAlign: "center",
   },

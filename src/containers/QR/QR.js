@@ -17,10 +17,12 @@ export default class QR extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      checked: 0
+      checked: 0,
+      time: null,
+      name: null,
     }
   }
-  
+
   render() {
     if (this.state.checked === 0) {
       return (
@@ -37,6 +39,7 @@ export default class QR extends Component {
                 QRcheckAPI(result.data, event_id)
                   .then(res => res.json())
                   .then(resJSON => {
+                    this.setState({ time: resJSON.time, name: resJSON.name });
                     if (resJSON.message === 'Done.') {
                       this.setState({ checked: 1 })
                     }
@@ -51,9 +54,9 @@ export default class QR extends Component {
             }
           >
             <View
-              style={[styles.blur_screen1, {justifyContent: "center"}]}
+              style={[styles.blur_screen1, { justifyContent: "center" }]}
               opacity={0.7}>
-              <Text style= {[styles.text, {color: "#fb3", fontWeight: "bold"}]}>Quét QR code trong ô vuông này</Text>
+              <Text style={[styles.text, { color: "#fb3", fontWeight: "bold" }]}>Quét QR code trong ô vuông này</Text>
             </View>
             <View
               style={{ flex: 1 / 2, flexDirection: "row", justifyContent: "space-between" }}>
@@ -70,54 +73,67 @@ export default class QR extends Component {
     }
     else if (this.state.checked === 1) {
       return (
-        <View style={[styles.screen, { alignItems: "center" }]}>
-          <View style={{ alignItems: "center" }}>
+        <View style={styles.screen}>
+          <View style={styles.screen_part}>
             <Text style={styles.text}>ĐÃ QUÉT</Text>
           </View>
-          <TouchableOpacity
-            style={styles.button}
-            onPress={() => {
-              this.setState({ checked: 0 })
-            }}>
-            {/* <AntDesign name = "circledowno" size = "70" color = "#fb3"></AntDesign> */}
-            <Text>QUÉT LẠI</Text>
-          </TouchableOpacity>
+          <View style={styles.screen_part}>
+            <Text style={styles.noti_text}>Họ và Tên: {this.state.name}</Text>
+            <Text style={styles.noti_text}>Quét vào lúc: {this.state.time}</Text>
+          </View>
+          <View style={styles.screen_part}>
+            <TouchableOpacity
+              style={styles.button}
+              onPress={() => {
+                this.setState({ checked: 0 })
+              }}>
+              <Text style={{ fontSize: 25 }}>QUÉT LẠI</Text>
+            </TouchableOpacity>
+          </View>
         </View>
       );
     }
 
     else if (this.state.checked === -1) {
       return (
-        <View style={[styles.screen, { alignItems: "center" }]}>
-          <View style={{ alignItems: "center", justifyContent: "center" }}>
+        <View style={styles.screen}>
+          <View style={styles.screen_part}>
             <Text style={styles.text}>MÃ QR ĐÃ ĐƯỢC SỬ DỤNG</Text>
           </View>
+          <View style={styles.screen_part}>
 
-          <TouchableOpacity
-            style={styles.button}
-            onPress={() => {
-              this.setState({ checked: 0 })
-            }}>
-            <Text>QUÉT LẠI</Text>
-          </TouchableOpacity>
+          </View>
+          <View style={styles.screen_part}>
+            <TouchableOpacity
+              style={styles.button}
+              onPress={() => {
+                this.setState({ checked: 0 })
+              }}>
+              <Text style={{ fontSize: 25 }}>QUÉT LẠI</Text>
+            </TouchableOpacity>
+          </View>
         </View>
       )
     }
 
     else if (this.state.checked === 2) {
       return (
-        <View style={[styles.screen, { alignItems: "center" }]}>
-          <View style={{ alignItems: "center", justifyContent: "center" }}>
+        <View style={styles.screen}>
+          <View style={styles.screen_part}>
             <Text style={styles.text}>KHÔNG CÓ MÃ QR</Text>
           </View>
+          <View style={styles.screen_part}>
 
-          <TouchableOpacity
-            style={styles.button}
-            onPress={() => {
-              this.setState({ checked: 0 })
-            }}>
-            <Text>QUÉT LẠI</Text>
-          </TouchableOpacity>
+          </View>
+          <View style={styles.screen_part}>
+            <TouchableOpacity
+              style={styles.button}
+              onPress={() => {
+                this.setState({ checked: 0 })
+              }}>
+              <Text style={{ fontSize: 25 }}>QUÉT LẠI</Text>
+            </TouchableOpacity>
+          </View>
         </View>
       )
     }
