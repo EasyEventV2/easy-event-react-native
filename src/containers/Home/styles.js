@@ -8,6 +8,13 @@ export default StyleSheet.create({
   list: {
     flex: 1
   },
+  map: { 
+    position: "absolute", 
+    top: 0, 
+    bottom: 0, 
+    left: 0, 
+    right: 0 
+  },
   block_list: {
     justifyContent: 'center',
     flex: 1,
@@ -62,6 +69,14 @@ export default StyleSheet.create({
     alignItems: "center",
     alignSelf: "flex-end",
     elevation: 10,
+  },
+  button: {
+    padding: 10,
+    margin: 5,
+    backgroundColor: "#fb3",
+    alignItems: "center",
+    marginHorizontal: 5,
+    borderRadius: 8,
   },
   modalScroll: {
     

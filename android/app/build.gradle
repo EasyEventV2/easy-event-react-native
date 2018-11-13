@@ -171,6 +171,7 @@ dependencies {
             force = true
         }
     }
+    implementation project(':react-native-maps') 
 
     // compile "com.google.zxing:core:3.2.1"
     // compile "com.drewnoakes:metadata-extractor:2.9.1"

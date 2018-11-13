@@ -8,11 +8,11 @@ import {
   FlatList,
   StyleSheet,
   Image,
-  Platform,
   ImageBackground,
   Modal,
   ScrollView,
 } from 'react-native';
+import MapView, { Marker } from 'react-native-maps';
 import { loadEventsAPI } from './../../services/apis'
 import styles from './styles'
 
@@ -22,13 +22,10 @@ export default class Home extends Component {
     this.state = {
       data: [],
       loading: 1,
-      modalVisible: false,
+      modalMapVisible: false,
+      modalEventVisible: false,
       choose: 0,
     }
-  }
-
-  setModalVisible(visible) {
-    this.setState({ modalVisible: visible });
   }
 
   componentWillMount() {
@@ -42,16 +39,56 @@ export default class Home extends Component {
       })
   }
 
-  renderModal() {
+  renderModalMap() {
     return (
       <View>
         <Modal
+          ref="modalMap"
+          animationType="fade"
+          transparent={false}
+          visible={this.state.modalMapVisible}
+          onRequestClose={() => {
+            this.setState({ modalMapVisible: !this.state.modalMapVisible });
+          }}>
+          <MapView
+            style={styles.map}
+            region={{
+              latitude: this.state.data[this.state.choose].cord.lat,
+              longitude: this.state.data[this.state.choose].cord.long,
+              latitudeDelta: 0.01,
+              longitudeDelta: 0.01,
+            }}
+          >
+            <Marker
+              coordinate={{
+                latitude: this.state.data[this.state.choose].cord.lat,
+                longitude: this.state.data[this.state.choose].cord.long,
+              }}
+              title={this.state.data[this.state.choose].name}
+            />
+          </MapView>
+        </Modal>
+      </View>
+
+    )
+  }
+
+  renderModalEvent() {
+    return (
+      <View style={styles.map}>
+        <Modal
+          ref="modalEvent"
           animationType="slide"
           transparent={false}
-          visible={this.state.modalVisible}
+          visible={this.state.modalEventVisible}
           onRequestClose={() => {
-            this.setModalVisible(!this.state.modalVisible);
+            this.setState({
+              modalEventVisible: !this.state.modalEventVisible,
+            });
           }}>
+
+          {this.renderModalMap()}
+
           <ScrollView
             scrollEnabled={true}
             style={styles.modalScroll}>
@@ -86,6 +123,15 @@ export default class Home extends Component {
               <Text style={styles.paragraph_text}>
                 {this.state.data[this.state.choose].address}
               </Text>
+              <TouchableOpacity
+                style={styles.button}
+                onPress={() => {
+                  this.setState({
+                    modalMapVisible: !this.state.modalMapVisible,
+                  });
+                }}>
+                <Text style={{ fontSize: 15 }}>XEM BẢN ĐỒ</Text>
+              </TouchableOpacity>
 
               <Text style={styles.header2_text}>
                 Giới thiệu:
@@ -94,6 +140,7 @@ export default class Home extends Component {
                 {this.state.data[this.state.choose].description}
               </Text>
             </View>
+
 
             {/* {(this.props.item.hasVideo == 'yes') ?
                 <View style={{ height: 300, padding: 20 }}>
@@ -130,7 +177,8 @@ export default class Home extends Component {
             </Text>
           </View>
 
-          {this.renderModal()}
+          {/* {this.renderModalMap()} */}
+          {this.renderModalEvent()}
 
           <FlatList
             style={styles.list}
@@ -142,7 +190,7 @@ export default class Home extends Component {
                 <TouchableOpacity
                   onPress={() => {
                     this.setState({ choose: this.state.data.indexOf(item) })
-                    this.setModalVisible(true);
+                    this.setState({ modalEventVisible: !this.state.modalEventVisible });
                   }}
                 >
                   <ImageBackground
