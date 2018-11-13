@@ -21,6 +21,8 @@ export default class Home extends Component {
     super(props);
     this.state = {
       data: [],
+      user_id: this.props.navigation.getParam('user_id'),
+      user_name: this.props.navigation.getParam('user_name'),
       loading: 1,
       modalMapVisible: false,
       modalEventVisible: false,
@@ -29,7 +31,7 @@ export default class Home extends Component {
   }
 
   componentWillMount() {
-    loadEventsAPI()
+    loadEventsAPI(this.state.user_id)
       .then(res => res.json())
       .then(resJSON => {
         for (var i = 0; i < resJSON.length; i++) {
@@ -41,7 +43,7 @@ export default class Home extends Component {
 
   renderModalMap() {
     return (
-      <View>
+      <View style={styles.map}>
         <Modal
           ref="modalMap"
           animationType="fade"
@@ -75,7 +77,7 @@ export default class Home extends Component {
 
   renderModalEvent() {
     return (
-      <View style={styles.map}>
+      <View>
         <Modal
           ref="modalEvent"
           animationType="slide"
@@ -106,7 +108,7 @@ export default class Home extends Component {
               </Image>
             </View>
             <View style={{ padding: 10 }}>
-              <Text style={[styles.header_text, { fontSize: 45, marginBottom: 10 }]}>
+              <Text style={[styles.header_text, { marginBottom: 10, textAlign: "left" }]}>
                 {this.state.data[this.state.choose].name}
               </Text>
 
@@ -116,6 +118,13 @@ export default class Home extends Component {
               <Text style={styles.paragraph_text}>
                 {this.state.data[this.state.choose].time.begin_date} đến {this.state.data[this.state.choose].time.end_date} ({this.state.data[this.state.choose].time.begin_time} - {this.state.data[this.state.choose].time.end_time})
                 </Text>
+
+              <Text style={styles.header2_text}>
+                Nhà tổ chức:
+                </Text>
+              <Text style={styles.paragraph_text}>
+                {this.state.data[this.state.choose].organizer}
+              </Text>
 
               <Text style={styles.header2_text}>
                 Địa điểm: {this.state.data[this.state.choose].place}
@@ -172,12 +181,11 @@ export default class Home extends Component {
             <Text style={styles.header_text}>
               SỰ KIỆN
             </Text>
-            <Text style={{ textAlign: "center", }}>
-              {this.state.data[0].organizer}
+            <Text style={styles.user_text}>
+              {this.state.user_name}
             </Text>
           </View>
 
-          {/* {this.renderModalMap()} */}
           {this.renderModalEvent()}
 
           <FlatList

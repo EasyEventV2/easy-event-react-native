@@ -8,12 +8,12 @@ export default StyleSheet.create({
   list: {
     flex: 1
   },
-  map: { 
-    position: "absolute", 
-    top: 0, 
-    bottom: 0, 
-    left: 0, 
-    right: 0 
+  map: {
+    position: "absolute",
+    top: 0,
+    bottom: 0,
+    left: 0,
+    right: 0
   },
   block_list: {
     justifyContent: 'center',
@@ -46,20 +46,25 @@ export default StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     flexDirection: "row",
-    paddingHorizontal: 10,
+    paddingHorizontal: 20,
   },
   header_text: {
-    fontSize: 25,
+    fontSize: 30,
     fontWeight: "bold",
     textAlign: "center",
   },
-  header2_text: { 
-    fontSize: 24, 
+  user_text: {
+    textAlign: "center",
+    fontSize: 20,
+    fontStyle: "italic",
+  },
+  header2_text: {
+    fontSize: 20,
     fontWeight: "bold",
   },
-  paragraph_text: { 
-    fontSize: 15, 
-    marginBottom: 10 
+  paragraph_text: {
+    fontSize: 13,
+    marginBottom: 10
   },
   check_in_button: {
     borderRadius: 5,
@@ -79,7 +84,7 @@ export default StyleSheet.create({
     borderRadius: 8,
   },
   modalScroll: {
-    
+
   },
   modalBackground: {
     height: Dimensions.get('window').height * 0.35,

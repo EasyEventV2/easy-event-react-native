@@ -4,29 +4,28 @@ import ServerQR from '../config/serverQR'
 
 export function loginAPI(username, password) {
     return fetch(ServerUsers, {
-        // method: 'GET',
-        // headers: {
-        //     Accept: 'application/json',
-        //     'Content-Type': 'application/json',
-        // },
-        // body: JSON.stringify({
-        //     name: username,
-        //     password: password,
-        // })
+        method: 'POST',
+        headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            name: username,
+            password: password,
+        })
     })
 }
 
-export function loadEventsAPI() {
+export function loadEventsAPI(user_id) {
     return fetch(ServerEvents, {
-        method: 'GET',
-        // headers: {
-        //     Accept: 'application/json',
-        //     'Content-Type': 'application/json',
-        // },
-        // body: JSON.stringify({
-        //     name: username,
-        //     password: password,
-        // })
+        method: 'POST',
+        headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            user_id: user_id,
+        })
     })
 }
 

@@ -22,21 +22,26 @@ export default class Login extends Component {
 
   onLogin = () => {
     this.setState({ loading: 1 });
-    if (this.state.password == '') {
-      alert("Empty password!");
+    if (this.state.username == '') {
+      alert("Ô tên người dùng đang để trống!");
+      this.setState({ loading: 0 });
+    }
+    else if (this.state.password == '') {
+      alert("Ô mật khẩu đang để trống!");
       this.setState({ loading: 0 });
     }
     else {
       loginAPI(this.state.username, this.state.password)
         .then((res) => res.json())
         .then((resJSON) => {
-          if (this.state.password === resJSON.password && this.state.username === resJSON.name) {
+          if (resJSON.message == "OK") {
             this.props.navigation.navigate('Home', {
-              username: this.state.username
+              user_id: resJSON.user_id,
+              user_name: this.state.username,
             });
           }
           else {
-            alert("Wrong password or username!");
+            alert("Sai mật khẩu hoặc tên người dùng!");
           }
           this.setState({ loading: 0 });
         })
