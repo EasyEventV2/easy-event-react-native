@@ -1,4 +1,4 @@
-import { StyleSheet, Dimensions } from 'react-native';
+import { StyleSheet, Dimensions, Platform } from 'react-native';
 
 export default StyleSheet.create({
   screen: {
@@ -74,6 +74,18 @@ export default StyleSheet.create({
     alignItems: "center",
     alignSelf: "flex-end",
     elevation: 10,
+  },
+  searcher: {
+    alignItems: "center",
+    flexDirection: "row",
+    paddingHorizontal: 20,
+  },
+  search_bar: {
+    paddingLeft: 5,
+    width: Dimensions.get('window').width * 0.65,
+    borderRadius: 10,
+    // backgroundColor: "#fb3",
+    // underlineColorAndroid: "#fb3",
   },
   button: {
     padding: 10,
