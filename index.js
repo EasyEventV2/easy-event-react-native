@@ -5,7 +5,8 @@ import { name as appName } from './app.json';
 import { createStackNavigator } from 'react-navigation';
 import { Login } from './src/containers/Login';
 import { Home } from './src/containers/Home';
-import {QR} from './src/containers/QR'
+import {QR} from './src/containers/QR';
+import {Guest} from './src/containers/Guest';
 
 YellowBox.ignoreWarnings(['Warning: isMounted(...) is deprecated', 'Module RCTImageLoader']);
 
@@ -23,9 +24,9 @@ const root = createStackNavigator(
     QR: {
       screen: QR
     },
-    // STS03: {
-    //   screen: STS03
-    // }
+    Guest: {
+      screen: Guest
+    }
   },
   {
     initialRouteName: 'Login',

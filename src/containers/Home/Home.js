@@ -25,6 +25,7 @@ export default class Home extends Component {
       user_id: this.props.navigation.getParam('user_id'),
       // user_id: '5be57f58bc2b01d8bbaefe37',
       user_name: this.props.navigation.getParam('user_name'),
+      event_id: null,
       latitude: [],
       longtitude: [],
       key_word: null,
@@ -136,6 +137,19 @@ export default class Home extends Component {
                   {this.state.data[this.state.choose].time.begin_date} đến {this.state.data[this.state.choose].time.end_date} ({this.state.data[this.state.choose].time.begin_time} - {this.state.data[this.state.choose].time.end_time})
               </Text>
 
+                <TouchableOpacity
+                  style={styles.button}
+                  onPress={() => {
+                    this.setState({
+                      modalEventVisible: !this.state.modalEventVisible,
+                    });
+                    this.props.navigation.navigate("Guest", {
+                      event_id: this.state.event_id
+                    })
+                  }}>
+                  <Text style={{ fontSize: 15 }}>DANH SÁCH KHÁCH</Text>
+                </TouchableOpacity>
+
                 <Text style={styles.header2_text}>
                   Nhà tổ chức:
               </Text>
@@ -246,6 +260,7 @@ export default class Home extends Component {
                     onPress={() => {
                       this.setState({ choose: this.state.data.indexOf(item) })
                       this.setState({ modalEventVisible: !this.state.modalEventVisible });
+                      this.setState({ event_id: item._id})
                     }}
                   >
                     <ImageBackground
@@ -267,7 +282,7 @@ export default class Home extends Component {
                             }}>
                             <Text style={styles.block_text}>
                               CHECK-IN
-                        </Text>
+                            </Text>
                           </TouchableOpacity>
                         </View>
                       </View>
@@ -277,8 +292,8 @@ export default class Home extends Component {
               numColumns={1}
             />
             : (this.state.loadingFlatList === -1) ?
-              <View style = {{flex: 1, justifyContent: "center", alignItems: 'center'}}>
-                <Text style = {styles.header_text}>Không có sự kiện nào trùng khớp</Text>
+              <View style={{ flex: 1, justifyContent: "center", alignItems: 'center' }}>
+                <Text style={styles.header_text}>Không có sự kiện nào trùng khớp</Text>
               </View>
               :
               <View style={styles.screen}>

@@ -1,6 +1,7 @@
 import ServerUsers from '../config/serverUsers'
 import ServerEvents from '../config/serverEvents'
 import ServerQR from '../config/serverQR'
+import ServerGuests from '../config/serverGuests'
 
 export function loginAPI(username, password) {
   return fetch(ServerUsers, {
@@ -25,6 +26,19 @@ export function loadEventsAPI(user_id) {
     },
     body: JSON.stringify({
       user_id: user_id,
+    })
+  })
+}
+
+export function loadGuestsAPI(event_id) {
+  return fetch(ServerGuests, {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      event_id: event_id,
     })
   })
 }
