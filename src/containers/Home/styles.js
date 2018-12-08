@@ -4,6 +4,7 @@ export default StyleSheet.create({
   screen: {
     justifyContent: 'center',
     flex: 1,
+    backgroundColor: "white",
   },
   list: {
     flex: 1
@@ -28,6 +29,7 @@ export default StyleSheet.create({
     elevation: 10,
   },
   block_text: {
+    color: "black",
     fontSize: 12,
   },
   imageBackground: {
@@ -49,16 +51,19 @@ export default StyleSheet.create({
     paddingHorizontal: 20,
   },
   header_text: {
+    color: "black",
     fontSize: 30,
     fontWeight: "bold",
     textAlign: "center",
   },
   user_text: {
+    color: "black",
     textAlign: "center",
     fontSize: 20,
     fontStyle: "italic",
   },
   header2_text: {
+    color: "black",
     fontSize: 20,
     fontWeight: "bold",
   },

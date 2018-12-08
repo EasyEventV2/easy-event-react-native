@@ -147,7 +147,7 @@ export default class Home extends Component {
                       event_id: this.state.event_id
                     })
                   }}>
-                  <Text style={{ fontSize: 15 }}>DANH SÁCH KHÁCH</Text>
+                  <Text style={{ fontSize: 15, color: "black", }}>DANH SÁCH KHÁCH</Text>
                 </TouchableOpacity>
 
                 <Text style={styles.header2_text}>
@@ -241,7 +241,7 @@ export default class Home extends Component {
                       })
                   }
                 }>
-                <Text>Tìm kiếm</Text>
+                <Text style ={{color: "black",}}>Tìm kiếm</Text>
               </TouchableOpacity>
             </View>
           </View>

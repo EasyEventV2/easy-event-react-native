@@ -1,5 +1,5 @@
 
-const ServerUsers = 'https://api.namdaoduy.tk/easy-event/users';
-// const ServerUsers = 'http://192.168.0.103:3000/users';
+// const ServerUsers = 'https://api.namdaoduy.tk/easy-event/user/login';
+const ServerUsers = 'http://192.168.1.5:3005/user/login';
 
 module.exports = ServerUsers;

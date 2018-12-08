@@ -2,7 +2,7 @@ import ServerUsers from '../config/serverUsers'
 import ServerEvents from '../config/serverEvents'
 import ServerQR from '../config/serverQR'
 import ServerGuests from '../config/serverGuests'
-
+import ServerEventSearch from '../config/serverEventSearch.js'
 export function loginAPI(username, password) {
   return fetch(ServerUsers, {
     method: 'POST',
@@ -44,8 +44,8 @@ export function loadGuestsAPI(event_id) {
 }
 
 export function searchEventsAPI(user_id, key_word) {
-  return fetch(ServerEvents, {
-    method: 'PUT',
+  return fetch(ServerEventSearch, {
+    method: 'POST',
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json',

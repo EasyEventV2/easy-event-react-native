@@ -102,7 +102,7 @@ export default class Login extends Component {
             style={[styles.button, { backgroundColor: "transparent" }]}
             onPress={() => { }}
           >
-            <Text>Không có tài khoản? Tạo mới ở đây</Text>
+            <Text style={{color: "black",}}>Không có tài khoản? Tạo mới ở đây</Text>
           </TouchableOpacity>
         </View>
       </View>
