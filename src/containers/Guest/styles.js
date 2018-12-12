@@ -10,7 +10,7 @@ export default StyleSheet.create({
   },
   list: {
     flex: 1,
-    padding: 15,
+    margin: 15,
   },
   loading: {
     flex: 1,

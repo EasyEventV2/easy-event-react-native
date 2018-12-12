@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   ActivityIndicator,
   Image,
+  AsyncStorage,
 } from 'react-native';
 import { loginAPI } from './../../services/apis'
 import styles from './styles'
@@ -17,6 +18,15 @@ export default class Login extends Component {
       username: '',
       password: '',
       loading: 0,
+    }
+  }
+
+  onSaveToken = async (token, user_id) => {
+    try {
+      await AsyncStorage.setItem('myToken', token);
+      await AsyncStorage.setItem('myUserId', user_id);
+    } catch (error) {
+      // Error saving data
     }
   }
 
@@ -39,6 +49,7 @@ export default class Login extends Component {
               user_id: resJSON.user_id,
               user_name: this.state.username,
             });
+            this.onSaveToken(resJSON.token,resJSON.user_id)
           }
           else {
             alert("Sai mật khẩu hoặc tên người dùng!");

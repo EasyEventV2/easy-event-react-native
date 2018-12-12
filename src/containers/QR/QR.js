@@ -5,6 +5,7 @@ import {
   TextInput,
   TouchableOpacity,
   ActivityIndicator,
+  AsyncStorage,
 } from 'react-native';
 import { QRcheckAPI } from './../../services/apis'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
@@ -20,8 +21,34 @@ export default class QR extends Component {
       checked: 0,
       time: null,
       name: null,
+      token: null,
+      user_id: null,
     }
   }
+
+  onLoadToken = async () => {
+    try {
+      const value = await AsyncStorage.getItem('myToken');
+      this.setState({ token: value })
+    } catch (error) {
+      // Error retrieving data
+    }
+  }
+
+  onLoadUserId = async () => {
+    try {
+      const value = await AsyncStorage.getItem('myUserId');
+      this.setState({ user_id: value })
+    } catch (error) {
+      // Error retrieving data
+    }
+  }
+
+  componentWillMount() {
+    this.onLoadToken();
+    this.onLoadUserId();
+  }
+
 
   render() {
     if (this.state.checked === 0) {
@@ -36,7 +63,7 @@ export default class QR extends Component {
               result => {
                 const event_id = this.props.navigation.getParam('event_id');
                 this.setState({ checked: 3 })
-                QRcheckAPI(result.data, event_id)
+                QRcheckAPI(result.data, event_id, this.state.token, this.state.user_id)
                   .then(res => res.json())
                   .then(resJSON => {
                     this.setState({ time: resJSON.time, name: resJSON.name });

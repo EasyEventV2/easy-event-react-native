@@ -11,6 +11,7 @@ import {
   ImageBackground,
   Modal,
   ScrollView,
+  AsyncStorage,
 } from 'react-native';
 import { SearchBar } from 'react-native-elements';
 import MapView, { Marker } from 'react-native-maps';
@@ -50,8 +51,29 @@ export default class Home extends Component {
       })
   }
 
-  onSearch() {
-
+  onSearch = () => {
+    this.setState({ loadingFlatList: 1 })
+    searchEventsAPI(this.state.user_id, this.state.key_word)
+      .then(res => res.json())
+      .then(resJSON => {
+        if (resJSON.message === 'OK') {
+          this.setState({ data: [] });
+          for (var i = 0; i < resJSON.result.length; i++) {
+            this.state.data.push(resJSON.result[i])
+          }
+        }
+        else {
+          this.setState({ data: [] });
+        }
+      })
+      .then(() => {
+        if (this.state.data.length === 0) {
+          this.setState({ loadingFlatList: -1 })
+        }
+        else {
+          this.setState({ loadingFlatList: 0 })
+        }
+      })
   }
 
   renderModalMap() {
@@ -215,33 +237,32 @@ export default class Home extends Component {
               />
               <TouchableOpacity
                 style={styles.button}
-                onPress={
-                  () => {
-                    this.setState({ loadingFlatList: 1 })
-                    searchEventsAPI(this.state.user_id, this.state.key_word)
-                      .then(res => res.json())
-                      .then(resJSON => {
-                        if (resJSON.message === 'OK') {
-                          this.setState({ data: [] });
-                          for (var i = 0; i < resJSON.result.length; i++) {
-                            this.state.data.push(resJSON.result[i])
-                          }
+                onPress={() => {
+                  this.setState({ loadingFlatList: 1 })
+                  searchEventsAPI(this.state.user_id, this.state.key_word)
+                    .then(res => res.json())
+                    .then(resJSON => {
+                      if (resJSON.message === 'OK') {
+                        this.setState({ data: [] });
+                        for (var i = 0; i < resJSON.result.length; i++) {
+                          this.state.data.push(resJSON.result[i])
                         }
-                        else {
-                          this.setState({ data: [] });
-                        }
-                      })
-                      .then(() => {
-                        if (this.state.data.length === 0) {
-                          this.setState({ loadingFlatList: -1 })
-                        }
-                        else {
-                          this.setState({ loadingFlatList: 0 })
-                        }
-                      })
-                  }
+                      }
+                      else {
+                        this.setState({ data: [] });
+                      }
+                    })
+                    .then(() => {
+                      if (this.state.data.length === 0) {
+                        this.setState({ loadingFlatList: -1 })
+                      }
+                      else {
+                        this.setState({ loadingFlatList: 0 })
+                      }
+                    })
+                }                  
                 }>
-                <Text style ={{color: "black",}}>Tìm kiếm</Text>
+                <Text style={{ color: "black", }}>Tìm kiếm</Text>
               </TouchableOpacity>
             </View>
           </View>
@@ -260,7 +281,7 @@ export default class Home extends Component {
                     onPress={() => {
                       this.setState({ choose: this.state.data.indexOf(item) })
                       this.setState({ modalEventVisible: !this.state.modalEventVisible });
-                      this.setState({ event_id: item._id})
+                      this.setState({ event_id: item._id })
                     }}
                   >
                     <ImageBackground
@@ -279,7 +300,8 @@ export default class Home extends Component {
                               this.props.navigation.navigate("QR", {
                                 event_id: item._id
                               })
-                            }}>
+                            }}
+                          >
                             <Text style={styles.block_text}>
                               CHECK-IN
                             </Text>
