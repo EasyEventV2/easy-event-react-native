@@ -42,9 +42,10 @@ export default class Login extends Component {
     }
     else {
       loginAPI(this.state.username, this.state.password)
+      // loginAPI('Aq', 'Aq')
         .then((res) => res.json())
         .then((resJSON) => {
-          if (resJSON.message == "OK") {
+          if (resJSON.success == true) {
             this.props.navigation.navigate('Home', {
               user_id: resJSON.user_id,
               user_name: this.state.username,
