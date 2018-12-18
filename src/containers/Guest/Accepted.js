@@ -60,13 +60,8 @@ export default class Accepted extends Component {
             if (resJSON.result[i].accepted === true && resJSON.result[i].check_in.checked === false)
               this.state.data.push(resJSON.result[i]);
           }
-          if (this.state.data.length == 0) {
-            this.setState({ loading: -1 });
-          }
-          else {
             this.setState({ loading: 1 }); //re-render
             this.setState({ loading: 0 });
-          }
         }
         else {
           this.setState({ loading: -1 });
