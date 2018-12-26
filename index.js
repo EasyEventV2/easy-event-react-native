@@ -9,9 +9,7 @@ import {QR} from './src/containers/QR';
 import {Guest} from './src/containers/Guest';
 
 YellowBox.ignoreWarnings(['Warning: isMounted(...) is deprecated', 'Module RCTImageLoader']);
-
-// console.disableYellowBox = true;
-
+console.disableYellowBox = true;
 
 const root = createStackNavigator(
   {

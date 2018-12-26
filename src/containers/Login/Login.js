@@ -42,6 +42,7 @@ export default class Login extends Component {
     }
     else {
       loginAPI(this.state.username, this.state.password)
+      // loginAPI('Aq', 'Aq')
         .then((res) => res.json())
         .then((resJSON) => {
           if (resJSON.success === true) {
@@ -55,6 +56,9 @@ export default class Login extends Component {
             alert("Sai mật khẩu hoặc tên người dùng!");
           }
           this.setState({ loading: 0 });
+        })
+        .catch(err => {
+          alert("Kiểm tra lại kết nối hoặc khởi động lại app!")
         })
     }
   }

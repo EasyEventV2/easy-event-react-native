@@ -73,9 +73,12 @@ export default class QR extends Component {
                     else if (resJSON.message === 'Guest ID already checked.') {
                       this.setState({ checked: -1 })
                     }
-                    else if (resJSON.message === 'No guest ID in database.') {
+                    else {
                       this.setState({ checked: 2 })
                     }
+                  })
+                  .catch(err => {
+                    this.setState({ checked: 2 })
                   })
               }
             }
