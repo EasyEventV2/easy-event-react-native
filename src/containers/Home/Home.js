@@ -17,6 +17,7 @@ import { SearchBar } from 'react-native-elements';
 import MapView, { Marker } from 'react-native-maps';
 import { loadEventsAPI, searchEventsAPI } from './../../services/apis'
 import styles from './styles'
+import localIP from '../../config/localIP'
 
 export default class Home extends Component {
   constructor(props) {
@@ -25,6 +26,7 @@ export default class Home extends Component {
       data: [],
       user_id: this.props.navigation.getParam('user_id'),
       // user_id: '5be57f58bc2b01d8bbaefe37',
+      // user_name: 'Aq',
       user_name: this.props.navigation.getParam('user_name'),
       event_id: null,
       latitude: [],
@@ -47,6 +49,10 @@ export default class Home extends Component {
           this.state.latitude.push(resJSON[i].cord.lat)
           this.state.longtitude.push(resJSON[i].cord.long)
         }
+        this.setState({ loading: 0 })
+      })
+      .catch(err => {
+        alert(err);
         this.setState({ loading: 0 })
       })
   }
@@ -136,7 +142,7 @@ export default class Home extends Component {
               style={styles.modalScroll}>
               <View style={styles.modalBackground}>
                 <Image
-                  source={{ uri: this.state.data[this.state.choose].dataURI }}
+                  source={{ uri: `${localIP}:5000/${this.state.data[this.state.choose].dataURI}` }}
                   style={styles.imageBackgroundModal}>
                   {/* <TouchableOpacity
                   style={{ height: 60, alignItems: 'flex-end', padding: 10 }}
@@ -285,7 +291,7 @@ export default class Home extends Component {
                     }}
                   >
                     <ImageBackground
-                      source={{ uri: item.dataURI }}
+                      source={{ uri: `${localIP}:5000/${item.dataURI}`}}
                       style={styles.imageBackground}>
                       <View style={styles.block_footer}>
                         <View style={{ flex: 1 / 2, justifyContent: "center" }}>

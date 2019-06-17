@@ -45,13 +45,12 @@ export function loadGuestsAPI(event_id) {
   })
 }
 
-export function acceptGuestsAPI(guest_id, token, user_id) {
+export function acceptGuestsAPI(guest_id, user_id) {
   return fetch(ServerGuestsAccept, {
     method: 'POST',
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json',
-      'Authorization': 'Bearer '+ token,
     },
     body: JSON.stringify({
       _id: guest_id,
@@ -74,13 +73,12 @@ export function searchEventsAPI(user_id, key_word) {
   })
 }
 
-export function QRcheckAPI(result, event, token, user_id) {
+export function QRcheckAPI(result, event, user_id) {
   return fetch(ServerQR, {
     method: 'POST',
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + token, 
     },
     body: JSON.stringify({
       QRcode: result,
