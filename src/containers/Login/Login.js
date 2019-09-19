@@ -58,7 +58,8 @@ export default class Login extends Component {
           this.setState({ loading: 0 });
         })
         .catch(err => {
-          alert("Kiểm tra lại kết nối hoặc khởi động lại app!")
+          alert("Kiểm tra lại kết nối hoặc khởi động lại app!");
+          this.setState({ loading: 0 });
         })
     }
   }

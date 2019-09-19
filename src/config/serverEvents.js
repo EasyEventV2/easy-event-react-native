@@ -1,3 +1,5 @@
-const ServerEvents = 'https://api.namdaoduy.tk/easy-event/user/event';
-// const ServerEvents = 'http://192.168.1.5:3005/user/event';
+import localHost from './localHost';
+
+const ServerEvents = 'https://api.easy-event-v1.namdaoduy.dev/easy-event/user/event';
+// const ServerEvents = `${localHost}/user/event`;
 module.exports = ServerEvents;
